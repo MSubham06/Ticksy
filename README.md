@@ -15,6 +15,7 @@ A clean, responsive, and distraction-free **Pomodoro-style study timer** built w
 
 ### 📝 Productivity Tools
 - **Simple To-Do List** – Add and remove tasks to stay on track
+- **Background Music** – Rain, Thunder strom, Forest, Night,etc. also some Gods music
 - **Session Counter** – Track the number of focus sessions per visit
 - **Motivational Quotes** – Displayed during break time for encouragement
 
