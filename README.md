@@ -30,3 +30,23 @@ A clean, responsive, and distraction-free **Pomodoro-style study timer** built w
 
 - **Frontend:** HTML, CSS, JavaScript
 - **No Backend** – All data is stored locally in the browser
+
+## File Structure
+
+- ticksy/
+- ├── index.html          - Main application HTML
+- ├── css/
+- │   ├── styles.css      - Main stylesheet
+- │   └── themes.css      - Dark/light theme styles
+- ├── js/
+- │   ├── app.js          - Main application logic
+- │   ├── timer.js        - Timer functionality
+- │   ├── stopwatch.js    - Stopwatch functionality
+- │   ├── audio.js        - Sound effects and background music
+- │   ├── todo.js         - To-do list functionality
+- │   └── storage.js      - LocalStorage handling
+- ├── assets/
+- │   ├── audio/          - Sound effects and background music
+- │   ├── icons/          - App icons and SVGs
+- │   └── fonts/          - Custom fonts if needed
+- └── README.md           - Project documentation
