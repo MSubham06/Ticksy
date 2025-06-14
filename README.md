@@ -31,3 +31,10 @@ A clean, responsive, and distraction-free **Pomodoro-style study timer** built w
 - **Frontend:** HTML, CSS, JavaScript
 - **No Backend** – All data is stored locally in the browser
 
+## Color Palette
+#181C14
+#3C3D37
+#697565
+#ECDFCC
+
+
