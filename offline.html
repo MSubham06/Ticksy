@@ -6,11 +6,56 @@
         body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
         h1 { color: #555; }
         p { color: #777; }
+        #reloadStatus { margin-top: 20px; color: #ff5722; }
+        .spinner { 
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <h1>Oops! You're Offline</h1>
-    <p>This page isn't available offline. Please check your connection.</p>
-    <button onclick="window.location.reload()">Retry</button>
+    <p>We can't connect to the internet right now.</p>
+    <div class="spinner" id="spinner"></div>
+    <p id="reloadStatus"></p>
+    <button onclick="checkConnection()">Retry Now</button>
+    
+    <script>
+        // Auto-check connection every 5 seconds
+        let checkInterval;
+        
+        function startChecking() {
+            document.getElementById('spinner').style.display = 'block';
+            document.getElementById('reloadStatus').textContent = 'Checking connection...';
+            
+            checkInterval = setInterval(checkConnection, 5000);
+        }
+        
+        function checkConnection() {
+            fetch(window.location.href, { method: 'HEAD', cache: 'no-store' })
+                .then(() => {
+                    // If fetch succeeds, reload the page
+                    clearInterval(checkInterval);
+                    window.location.reload();
+                })
+                .catch(() => {
+                    document.getElementById('reloadStatus').textContent = 
+                        'Still offline. Next check in 5 seconds...';
+                });
+        }
+        
+        // Start checking when page loads
+        startChecking();
+    </script>
 </body>
 </html>
