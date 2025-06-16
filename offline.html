@@ -7,15 +7,6 @@
         h1 { color: #555; }
         p { color: #777; }
     </style>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => console.log('ServiceWorker registered'))
-                    .catch(err => console.log('ServiceWorker registration failed: ', err));
-            });
-        }
-    </script>
 </head>
 <body>
     <h1>Oops! You're Offline</h1>
