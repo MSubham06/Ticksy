@@ -6,7 +6,7 @@
   <title>Ticksy - Your Timer Companion</title>
   
   <!-- Logo (Favicon) -->
-  <link rel="icon" type="image/png" href="D:\CSE\Projects\Ticksy\assets\icons\ticksy-logo.png" />
+  <link rel="icon" type="image/png" href="assets/icons/ticksy-logo.png" />
 
   <!-- Google Font (Optional) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
@@ -25,6 +25,15 @@
     }
 
   </style>
+  <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('ServiceWorker registered'))
+                    .catch(err => console.log('ServiceWorker registration failed: ', err));
+            });
+        }
+    </script>
 </head>
 
 <body>
