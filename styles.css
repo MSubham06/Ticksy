@@ -1,0 +1,242 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  color: #FFFFFF;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #000000;
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(255, 103, 31, 0.2);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  background-color: #ff671f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-weight: bold;
+}
+
+.app-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ff671f;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.icon-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.icon:hover {
+  color: #ff671f;
+  transform: scale(1.1);
+}
+
+.icon.active {
+  color: #ff671f;
+}
+
+.icon-text {
+  position: absolute;
+  top: 100%;
+  margin-top: 5px;
+  font-size: 0.7rem;
+  background-color: #ff671f;
+  color: #000000;
+  padding: 3px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.icon-container:hover .icon-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(5px);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: #ff671f;
+  transform: scale(1.1);
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.clock-display {
+  font-size: 5rem;
+  font-weight: 600;
+  color: #ff671f;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.date-display {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  color: #FFFFFF;
+}
+
+/* Alarm/Timer/Stopwatch Controls */
+.controls {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.controls.active {
+  display: flex;
+}
+
+.time-input {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.time-input input {
+  width: 60px;
+  padding: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  background: #333;
+  border: 1px solid #ff671f;
+  border-radius: 5px;
+  color: white;
+}
+
+.time-input span {
+  font-size: 1.5rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #ff671f;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e55c1a;
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  background-color: #333;
+  color: white;
+}
+
+.alarm-list {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+  display: none;
+}
+
+.alarm-list.active {
+  display: block;
+}
+
+.alarm-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #333;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.alarm-item .time {
+  font-size: 1.2rem;
+}
+
+.alarm-item .delete {
+  color: #ff671f;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  .nav-icons {
+    gap: 15px;
+  }
+  .app-name {
+    font-size: 1.2rem;
+  }
+  .clock-display {
+    font-size: 3rem;
+  }
+  .date-display {
+    font-size: 1rem;
+  }
+}
