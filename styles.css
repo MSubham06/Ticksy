@@ -17,7 +17,6 @@ body {
   padding: 15px 30px;
   background-color: #000000;
   color: #FFFFFF;
-  box-shadow: 0 2px 10px rgba(255, 103, 31, 0.2);
 }
 
 .logo-container {
@@ -27,15 +26,8 @@ body {
 }
 
 .logo {
-  width: 30px;
   height: 30px;
-  background-color: #ff671f;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  font-weight: bold;
+  width: auto;
 }
 
 .app-name {
