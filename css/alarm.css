@@ -1,0 +1,83 @@
+.alarm-content {
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .current-time-display {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .clock-display {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+  
+  .date-display {
+    font-size: 1.2rem;
+  }
+  
+  .alarm-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .alarm-list {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .alarm-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .alarm-item .time {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  .alarm-item .delete {
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .clock-display {
+      font-size: 2.5rem;
+    }
+    
+    .date-display {
+      font-size: 1rem;
+    }
+    
+    .alarm-item .time {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .clock-display {
+      font-size: 2rem;
+    }
+    
+    .alarm-controls {
+      gap: 15px;
+    }
+    
+    .alarm-item {
+      padding: 10px 12px;
+    }
+  }
