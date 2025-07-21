@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticksy - Alarm</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/alarm.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="assets/icons/ticksy-logo.png" alt="Ticksy Logo" class="logo">
+      <span class="app-name">Ticksy</span>
+    </div>
+
+    <div class="nav-icons">
+      <a href="index.html" class="icon-container">
+        <i class="fas fa-clock icon"></i>
+        <span class="icon-text">Clock</span>
+      </a>
+      <a href="alarm.html" class="icon-container active">
+        <i class="fas fa-alarm-clock icon"></i>
+        <span class="icon-text">Alarm</span>
+      </a>
+      <a href="timer.html" class="icon-container">
+        <i class="fas fa-hourglass-start icon"></i>
+        <span class="icon-text">Timer</span>
+      </a>
+      <a href="stopwatch.html" class="icon-container">
+        <i class="fas fa-stopwatch icon"></i>
+        <span class="icon-text">Stopwatch</span>
+      </a>
+      <button class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="main-content alarm-content">
+    <div class="current-time-display">
+      <div class="clock-display" id="digital-clock">00:00:00</div>
+      <div class="date-display" id="date-display">Monday, January 1, 2023</div>
+    </div>
+
+    <div class="alarm-controls">
+      <div class="time-input">
+        <input type="number" id="alarm-hours" min="1" max="12" value="12">
+        <span>:</span>
+        <input type="number" id="alarm-minutes" min="0" max="59" value="00">
+        <select id="alarm-am-pm">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+      </div>
+      <div class="action-buttons">
+        <button class="btn" id="set-alarm">Set Alarm</button>
+      </div>
+      <div class="alarm-list" id="alarm-list"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/alarm.js"></script>
+</body>
+</html>
