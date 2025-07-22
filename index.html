@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ticksy - Your Timer Companion</title>
-  
-  <!-- Google Font -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticksy - Clock</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/clock.css">
 </head>
-
 <body>
   <nav class="navbar">
     <div class="logo-container">
@@ -23,80 +17,34 @@
     </div>
 
     <div class="nav-icons">
-      <div class="icon-container" id="clock-btn">
-        <i class="fas fa-clock icon active" id="clock-icon"></i>
-        <span class="icon-text">Current Time</span>
-      </div>
-
-      <div class="icon-container" id="alarm-btn">
+      <a href="index.html" class="icon-container active">
+        <i class="fas fa-clock icon"></i>
+        <span class="icon-text">Clock</span>
+      </a>
+      <a href="alarm.html" class="icon-container">
         <i class="fas fa-alarm-clock icon"></i>
         <span class="icon-text">Alarm</span>
-      </div>
-
-      <div class="icon-container" id="timer-btn">
+      </a>
+      <a href="timer.html" class="icon-container">
         <i class="fas fa-hourglass-start icon"></i>
         <span class="icon-text">Timer</span>
-      </div>
-
-      <div class="icon-container" id="stopwatch-btn">
+      </a>
+      <a href="stopwatch.html" class="icon-container">
         <i class="fas fa-stopwatch icon"></i>
         <span class="icon-text">Stopwatch</span>
-      </div>
-
+      </a>
       <button class="theme-toggle" id="theme-toggle">
         <i class="fas fa-moon"></i>
       </button>
     </div>
   </nav>
 
-  <div class="main-content">
-    <!-- Clock Display -->
+  <div class="main-content clock-content">
     <div class="clock-display" id="digital-clock">00:00:00</div>
     <div class="date-display" id="date-display">Monday, January 1, 2023</div>
-
-    <!-- Alarm Controls -->
-    <div class="controls" id="alarm-controls">
-      <div class="time-input">
-        <input type="number" id="alarm-hours" min="0" max="23" value="12">
-        <span>:</span>
-        <input type="number" id="alarm-minutes" min="0" max="59" value="00">
-        <select id="alarm-am-pm">
-          <option value="AM">AM</option>
-          <option value="PM">PM</option>
-        </select>
-      </div>
-      <div class="action-buttons">
-        <button class="btn" id="set-alarm">Set Alarm</button>
-      </div>
-      <div class="alarm-list" id="alarm-list"></div>
-    </div>
-
-    <!-- Timer Controls -->
-    <div class="controls" id="timer-controls">
-      <div class="time-input">
-        <input type="number" id="timer-hours" min="0" max="23" value="0">
-        <span>:</span>
-        <input type="number" id="timer-minutes" min="0" max="59" value="0">
-        <span>:</span>
-        <input type="number" id="timer-seconds" min="0" max="59" value="0">
-      </div>
-      <div class="action-buttons">
-        <button class="btn" id="start-timer">Start</button>
-        <button class="btn secondary" id="reset-timer">Reset</button>
-      </div>
-    </div>
-
-    <!-- Stopwatch Controls -->
-    <div class="controls" id="stopwatch-controls">
-      <div class="clock-display" id="stopwatch-display">00:00:00</div>
-      <div class="action-buttons">
-        <button class="btn" id="start-stopwatch">Start</button>
-        <button class="btn secondary" id="pause-stopwatch">Pause</button>
-        <button class="btn secondary" id="reset-stopwatch">Reset</button>
-      </div>
-    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/clock.js"></script>
 </body>
 </html>
