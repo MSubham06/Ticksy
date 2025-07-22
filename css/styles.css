@@ -1,275 +1,53 @@
-/* Base Styles */
-:root {
-  --primary-color: #ff671f;
-  --secondary-color: #333;
-  --text-color: #FFFFFF;
-  --bg-color: #000000;
-  --btn-hover: #e55c1a;
-  --lap-bg: rgba(255, 103, 31, 0.1);
-}
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+let isDarkMode = localStorage.getItem('theme') === 'light' ? false : true;
 
-[data-theme="light"] {
-  --primary-color: #ff671f;
-  --secondary-color: #f0f0f0;
-  --text-color: #000000;
-  --bg-color: #FFFFFF;
-  --btn-hover: #e55c1a;
-  --lap-bg: rgba(255, 103, 31, 0.1);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
-}
-
-/* Navbar Styles */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
-  background-color: var(--bg-color);
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo {
-  height: 30px;
-  width: auto;
-}
-
-.app-name {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary-color);
-}
-
-.nav-icons {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.icon-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  min-width: 40px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.icon {
-  font-size: 1.2rem;
-  color: var(--text-color);
-  transition: all 0.3s ease;
-}
-
-.icon-container:hover .icon,
-.icon-container.active .icon {
-  color: var(--primary-color);
-  transform: scale(1.1);
-}
-
-.icon-text {
-  position: absolute;
-  top: 100%;
-  margin-top: 5px;
-  font-size: 0.7rem;
-  background-color: var(--primary-color);
-  color: #000000;
-  padding: 3px 8px;
-  border-radius: 4px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  z-index: 10;
-}
-
-.icon-container:hover .icon-text {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(5px);
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: var(--text-color);
-  transition: all 0.3s ease;
-  padding: 5px;
-}
-
-.theme-toggle:hover {
-  color: var(--primary-color);
-  transform: scale(1.1);
-}
-
-/* Main Content Styles */
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  width: 100%;
-}
-
-/* Shared Controls */
-.time-input {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.time-input input {
-  width: 60px;
-  padding: 10px;
-  font-size: 1.2rem;
-  text-align: center;
-  background: var(--secondary-color);
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  color: var(--text-color);
-}
-
-.time-input span {
-  font-size: 1.5rem;
-}
-
-.time-input select {
-  padding: 10px;
-  font-size: 1rem;
-  background: var(--secondary-color);
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  color: var(--text-color);
-}
-
-.action-buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.btn {
-  padding: 10px 20px;
-  background-color: var(--primary-color);
-  color: #000000;
-  border: none;
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-  min-width: 100px;
-}
-
-.btn:hover {
-  background-color: var(--btn-hover);
-  transform: scale(1.05);
-}
-
-.btn.secondary {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-}
-
-/* Responsive Breakpoints */
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 15px 3%;
+function applyTheme() {
+  if (isDarkMode) {
+    body.setAttribute('data-theme', 'dark');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.setAttribute('data-theme', 'light');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    localStorage.setItem('theme', 'light');
   }
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px 10px;
+themeToggle.addEventListener('click', () => {
+  isDarkMode = !isDarkMode;
+  applyTheme();
+});
+
+// Initialize theme
+applyTheme();
+
+// Update current time on all pages
+function updateClock() {
+  const now = new Date();
+  const timeElements = document.querySelectorAll('#digital-clock');
+  const dateElements = document.querySelectorAll('#date-display');
+  
+  if (timeElements.length > 0) {
+    const options = { 
+      timeZone: 'Asia/Kolkata',
+      hour12: true,
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    };
+    const timeString = now.toLocaleTimeString('en-IN', options);
+    timeElements.forEach(el => el.textContent = timeString);
   }
   
-  .nav-icons {
-    width: 100%;
-    justify-content: space-around;
-    gap: 10px;
-  }
-  
-  .btn {
-    padding: 8px 15px;
-    min-width: 80px;
+  if (dateElements.length > 0) {
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateString = now.toLocaleDateString('en-IN', dateOptions);
+    dateElements.forEach(el => el.textContent = dateString);
   }
 }
 
-@media (max-width: 480px) {
-  .time-input {
-    gap: 5px;
-  }
-  
-  .time-input input {
-    width: 45px;
-    padding: 8px;
-    font-size: 0.9rem;
-  }
-  
-  .time-input span {
-    font-size: 1.2rem;
-  }
-  
-  .action-buttons {
-    gap: 10px;
-  }
-  
-  .btn {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    min-width: 70px;
-  }
-  
-  .icon-text {
-    font-size: 0.6rem;
-    padding: 2px 5px;
-  }
-}
-
-@media (max-width: 360px) {
-  .app-name {
-    font-size: 1.2rem;
-  }
-  
-  .icon {
-    font-size: 1rem;
-  }
-  
-  .theme-toggle {
-    font-size: 1rem;
-  }
-}
+// Update time immediately and then every second
+updateClock();
+setInterval(updateClock, 1000);
