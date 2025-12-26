@@ -1,50 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ticksy - Clock</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/clock.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticksy | Focus Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo-container">
-      <img src="assets/icons/ticksy-logo.png" alt="Ticksy Logo" class="logo">
-      <span class="app-name">Ticksy</span>
+
+    <nav class="navbar">
+        <div class="brand">
+            <img src="assets/logo.png" alt="Ticksy Logo" class="logo-img">
+            <span>Ticksy</span>
+        </div>
+        <div class="nav-controls">
+            <button id="music-toggle" title="Ambience Sounds"><i class="fa-solid fa-music"></i></button>
+        </div>
+    </nav>
+
+    <div id="music-panel" class="music-panel hidden">
+        <div class="panel-header">
+            <h3>Ambience</h3>
+            <button id="close-music"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="sound-grid">
+            <button class="sound-item" data-sound="rain">
+                <i class="fa-solid fa-cloud-rain"></i>
+                <span>Rain</span>
+            </button>
+            <button class="sound-item" data-sound="thunder">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Thunder</span>
+            </button>
+            <button class="sound-item" data-sound="forest">
+                <i class="fa-solid fa-tree"></i>
+                <span>Forest</span>
+            </button>
+            <button class="sound-item" data-sound="night">
+                <i class="fa-solid fa-moon"></i>
+                <span>Night</span>
+            </button>
+            <button class="sound-item special" data-sound="gods">
+                <i class="fa-solid fa-om"></i>
+                <span>Chalisa</span>
+            </button>
+        </div>
+
+        <div class="volume-control">
+            <i class="fa-solid fa-volume-low"></i>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+            <i class="fa-solid fa-volume-high"></i>
+        </div>
     </div>
 
-    <div class="nav-icons">
-      <a href="index.html" class="icon-container active">
-        <i class="fas fa-clock icon"></i>
-        <span class="icon-text">Clock</span>
-      </a>
-      <a href="alarm.html" class="icon-container">
-        <i class="fas fa-alarm-clock icon"></i>
-        <span class="icon-text">Alarm</span>
-      </a>
-      <a href="timer.html" class="icon-container">
-        <i class="fas fa-hourglass-start icon"></i>
-        <span class="icon-text">Timer</span>
-      </a>
-      <a href="stopwatch.html" class="icon-container">
-        <i class="fas fa-stopwatch icon"></i>
-        <span class="icon-text">Stopwatch</span>
-      </a>
-      <button class="theme-toggle" id="theme-toggle">
-        <i class="fas fa-moon"></i>
-      </button>
-    </div>
-  </nav>
+    <main class="container">
+        <section class="timer-section">
+            <div class="timer-card">
+                
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-mode="pomodoro">Focus</button>
+                        <button class="tab-btn" data-mode="short">Short Break</button>
+                        <button class="tab-btn" data-mode="long">Long Break</button>
+                        <button class="tab-btn" data-mode="custom" id="custom-tab">Custom</button>
+                    </div>
+                    <div id="live-clock" class="live-clock">12:00:00 PM</div>
+                </div>
 
-  <div class="main-content clock-content">
-    <div class="clock-display" id="digital-clock">00:00:00</div>
-    <div class="date-display" id="date-display">Monday, January 1, 2023</div>
-  </div>
+                <div id="custom-inputs" class="custom-inputs hidden">
+                    <div class="input-wrapper">
+                        <input type="number" id="custom-hrs" placeholder="00" min="0" max="23">
+                        <span>h</span>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="number" id="custom-mins" placeholder="00" min="0" max="59">
+                        <span>m</span>
+                    </div>
+                    <button id="set-custom-btn"><i class="fa-solid fa-check"></i></button>
+                </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/clock.js"></script>
+                <div class="timer-display">
+                    <h1 id="time">25:00</h1>
+                </div>
+
+                <div class="controls">
+                    <button id="main-btn" class="primary-btn">START</button>
+                    <button id="reset-btn" class="secondary-btn" title="Reset"><i class="fa-solid fa-rotate-right"></i></button>
+                    <button id="fullscreen-btn" class="secondary-btn" title="Full Screen"><i class="fa-solid fa-expand"></i></button>
+                </div>
+                
+                <p id="quote-display" class="quote">"Focus on being productive instead of busy."</p>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <section class="panel stats-panel">
+                <div class="stat-content">
+                    <div class="stat-icon"><i class="fa-solid fa-fire"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="session-count">0</span>
+                        <span class="stat-label">Sessions Today</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel tasks-panel">
+                <div class="panel-header">
+                    <h3>Tasks</h3>
+                    <button id="add-task-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <div class="input-row">
+                    <input type="text" id="task-input" placeholder="What are you working on?">
+                </div>
+                <ul id="task-list"></ul>
+            </section>
+        </aside>
+    </main>
+
+    <audio id="audio-rain" loop src="assets/audio/rain.mp3"></audio>
+    <audio id="audio-thunder" loop src="assets/audio/thunder.mp3"></audio>
+    <audio id="audio-forest" loop src="assets/audio/forest.mp3"></audio>
+    <audio id="audio-night" loop src="assets/audio/night.mp3"></audio>
+    <audio id="audio-gods" loop src="assets/audio/gods.mp3"></audio>
+    <audio id="audio-alert" src="assets/audio/alert.mp3"></audio>
+
+    <script src="script.js"></script>
 </body>
 </html>
