@@ -1,8 +1,3 @@
-# Ticksy
-Your Minimalist Timer &amp; Stopwatch Companion. It’s a sleek web app for effortless time tracking — perfect for work, study, or workouts. Features include a responsive design, dark theme, background music, sound effects, and smooth performance.
-
-A clean, responsive, and distraction-free **Pomodoro-style study timer** built with HTML, CSS, and JavaScript. Perfect for students and anyone looking to boost productivity using time-blocking techniques – no login or data backup required!
-
 [![Issues](https://img.shields.io/github/issues/MSubham06/Ticksy?style=for-the-badge)](https://github.com/MSubham06/Ticksy/issues)
 [![Stars](https://img.shields.io/github/stars/MSubham06/Ticksy?style=for-the-badge)](https://github.com/MSubham06/Ticksy/stargazers)
 
@@ -12,7 +7,7 @@ A clean, responsive, and distraction-free **Pomodoro-style study timer** built w
     <img src="assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Ticksy Focus Timer</h3>
+  <h3 align="center">Ticksy : Focus Timer</h3>
 
   <p align="center">
     A minimal, audio-immersive Pomodoro timer designed for deep work and flow states.
@@ -32,7 +27,8 @@ A clean, responsive, and distraction-free **Pomodoro-style study timer** built w
 
 ## 📖 About the Project
 
-**Ticksy** is designed to help students, developers, and professionals maintain high levels of focus while preventing burnout. By combining the structured **Pomodoro Technique** with calming **ambient soundscapes**, Ticksy creates an environment conducive to deep work.
+**Ticksy** is designed to help students, developers, and professionals maintain high levels of focus while preventing burnout. By combining the structured **Pomodoro Technique** with calming **ambient soundscapes**, Ticksy creates an environment conducive to deep work.<br />
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 ### 🎯 Who is this for?
 * **Students** preparing for exams who need disciplined study blocks.
