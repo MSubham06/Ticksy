@@ -20,9 +20,9 @@ A clean, responsive, and distraction-free **Pomodoro-style study timer** built w
 - **Motivational Quotes** – Displayed during break time for encouragement
 
 ### 🎨 UI & UX
-- **Dark / Light Theme Toggle**
+- **Dark Theme**
 - **Responsive Design** – Works seamlessly on both mobile and desktop
-- **Local Storage** – Saves theme, mute status, session count, and custom timer settings
+- **Local Storage** –  mute status, session count, and custom timer settings
 
 ---
 
