@@ -12,7 +12,8 @@ A clean, responsive, and distraction-free **Pomodoro-style study timer** built w
 - **Custom Timer** – Set your own focus and break durations
 - **Start / Pause / Reset** controls
 - **Sound Alert** when session ends (with mute toggle)
-
+- **Real Time badge**
+- 
 ### 📝 Productivity Tools
 - **Simple To-Do List** – Add and remove tasks to stay on track
 - **Background Music** – Rain, Thunder strom, Forest, Night,etc. also some Gods music
