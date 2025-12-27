@@ -15,7 +15,7 @@
     <a href="https://github.com/MSubham06/Ticksy"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/MSubham06/Ticksy">View Live Demo</a>
+    <a href="https://msubham06.github.io/Ticksy/">View Live Demo</a>
     ·
     <a href="https://github.com/MSubham06/Ticksy/issues">Report Bug</a>
     ·
