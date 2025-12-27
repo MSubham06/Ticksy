@@ -23,7 +23,7 @@ body {
     overflow-y: auto; 
 }
 
-/* --- NAVBAR --- */
+/* --- NAVBAR UPDATED --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -38,12 +38,23 @@ body {
 }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.3rem; }
 .logo-img { height: 30px; width: auto; }
-.nav-controls { display: flex; gap: 15px; }
-.nav-controls button { 
-    background: none; border: none; color: var(--text); 
-    font-size: 1.2rem; cursor: pointer; transition: 0.2s; padding: 5px;
+.nav-controls { display: flex; gap: 15px; align-items: center; }
+
+/* Updated to include 'a.nav-btn' for the Developer Link */
+.nav-controls button, .nav-controls a.nav-btn { 
+    background: none; 
+    border: none; 
+    color: var(--text); 
+    font-size: 1.2rem; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Removes underline from the link */
 }
-.nav-controls button:hover { color: var(--primary); }
+.nav-controls button:hover, .nav-controls a.nav-btn:hover { color: var(--primary); }
 
 /* --- MUSIC PANEL --- */
 .music-panel {
@@ -99,12 +110,11 @@ body {
     box-shadow: 0 4px 12px rgba(242, 92, 5, 0.3);
 }
 
-/* VOLUME CONTROL UPDATED */
+/* VOLUME CONTROL */
 .volume-control {
     display: flex; align-items: center; gap: 10px; color: var(--text-light); font-size: 0.9rem;
     background: var(--bg); padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border);
 }
-/* Set Volume Icons to Orange */
 .volume-control i { color: var(--primary); } 
 .volume-control input { flex: 1; accent-color: var(--primary); cursor: pointer; height: 4px; }
 
@@ -180,7 +190,7 @@ body {
 }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-/* CUSTOM INPUTS UPDATED */
+/* CUSTOM INPUTS */
 .custom-inputs { display: flex; gap: 10px; margin-bottom: 30px; align-items: center; flex-wrap: wrap; justify-content: center;}
 .custom-inputs.hidden { display: none; }
 
@@ -192,7 +202,7 @@ body {
     width: 55px; 
     border-radius: 10px; 
     text-align: center; 
-    color-scheme: dark; /* Makes spinner arrows white */
+    color-scheme: dark; 
 }
 #set-custom-btn { background: var(--primary); color: white; border: none; width: 35px; height: 35px; border-radius: 10px; cursor: pointer; }
 
@@ -242,7 +252,7 @@ body {
     display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem;
 }
 
-/* TASKS UPDATED */
+/* TASKS */
 .tasks-panel { flex: 1; display: flex; flex-direction: column; min-height: 300px; max-height: 500px; }
 #add-task-btn { background: var(--primary); color: white; border: none; border-radius: 8px; width: 30px; height: 30px; cursor: pointer; }
 
@@ -285,7 +295,7 @@ body.fullscreen-active .timer-section { flex: none; width: 100%; height: 100%; }
 body.fullscreen-active .timer-card { background: transparent; border: none; box-shadow: none; height: 100%; justify-content: center; padding: 0; }
 body.fullscreen-active .timer-display h1 { font-size: 20vw; margin: 0; letter-spacing: 0; }
 
-/* --- RESPONSIVE MODAL (ALERT BOX UPDATED) --- */
+/* --- RESPONSIVE MODAL --- */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px);
@@ -309,28 +319,26 @@ body.fullscreen-active .timer-display h1 { font-size: 20vw; margin: 0; letter-sp
 }
 .modal-overlay.hidden .modal-box { transform: scale(0.9); }
 
-/* Updated Icon & Title Styles */
 .modal-icon { 
     font-size: 2.5rem; 
-    color: var(--primary); /* ORANGE LOGO */
+    color: var(--primary); 
     margin-bottom: 15px; 
 }
 
 .modal-box h3 { 
     font-size: 1.5rem; 
-    color: #ffffff; /* WHITE TEXT */
-    font-weight: 800; /* BOLD */
+    color: #ffffff; 
+    font-weight: 800; 
     margin-bottom: 10px; 
 }
 
 .modal-box p { 
-    color: rgba(255, 255, 255, 0.6); /* LESS OPACITY */
+    color: rgba(255, 255, 255, 0.6); 
     font-size: 0.95rem; 
     margin-bottom: 25px; 
     line-height: 1.5; 
 }
 
-/* Stack buttons on small screens */
 .modal-actions { 
     display: flex; 
     gap: 15px; 

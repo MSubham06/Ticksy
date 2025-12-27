@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Developer - Ticksy</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #A5B944;
+            --bg: #121212;
+            --surface: #1E1E1E;
+            --text: #E0E0E0;
+            --text-light: #AAAAAA;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .about-container {
+            display: flex;
+            background: var(--surface);
+            max-width: 900px;
+            width: 90%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 1px solid #333;
+            flex-direction: row; /* Default: Image Left, Text Right */
+        }
+
+        /* Left Side: Image */
+        .image-section {
+            flex: 1;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: 0.3s;
+        }
+        .image-section img:hover { opacity: 1; transform: scale(1.05); }
+
+        /* Right Side: Information */
+        .info-section {
+            flex: 1.2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .back-btn:hover { color: var(--primary); }
+
+        h1 { font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        h1 span { color: var(--primary); }
+        
+        h3 { font-size: 1.1rem; color: var(--text-light); margin-bottom: 20px; font-weight: 500; }
+
+        p { line-height: 1.6; color: #ccc; margin-bottom: 30px; font-size: 1rem; }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: auto;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(165, 185, 68, 0.4);
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column; /* Stack vertically on mobile */
+                margin: 20px;
+            }
+            .image-section { min-height: 300px; }
+            .info-section { padding: 30px; text-align: center; }
+            .social-links { justify-content: center; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="about-container">
+        <div class="image-section">
+            <img src="assets/developer.jpg" alt="Developer Photo" onerror="this.src='https://via.placeholder.com/400x500/121212/F25C05?text=Developer'">
+        </div>
+
+        <div class="info-section">
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Timer</a>
+            
+            <h1>Hi, I'm <span>SUBHAM</span></h1>
+            <h3>Full Stack Developer & Student</h3>
+            
+            <p>
+                I built <strong>Ticksy</strong> because I needed a distraction free way to manage my study sessions. 
+                Most timers were either too complex or cluttered with ads. I wanted something clean, dark-themed, 
+                and effective—so I coded it myself!
+                <br><br>
+                I specialize in Full Stack Web Development, UI/UX Design, and building cool, useful tools. I also take on freelance gigs.
+            </p>
+
+            <div class="social-links">
+                <a href="https://github.com/MSubham06" target="_blank" class="social-btn" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/msubham" target="_blank" class="social-btn" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:msubham246@gmail.com" class="social-btn" title="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.about-container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(20px)';
+            container.style.transition = 'all 0.6s ease-out';
+
+            setTimeout(() => {
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
