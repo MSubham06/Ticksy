@@ -4,7 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainBtn = document.getElementById('main-btn');
     const resetBtn = document.getElementById('reset-btn');
     const tabBtns = document.querySelectorAll('.tab-btn');
+    
+    // Stats Elements
     const sessionCount = document.getElementById('session-count');
+    const totalTimeDisplay = document.getElementById('total-time'); 
+    
     const liveClock = document.getElementById('live-clock');
     const fullscreenBtn = document.getElementById('fullscreen-btn');
     
@@ -19,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const customInputs = document.getElementById('custom-inputs');
     const customHrs = document.getElementById('custom-hrs');
     const customMins = document.getElementById('custom-mins');
+    const customSecs = document.getElementById('custom-secs'); 
     const setCustomBtn = document.getElementById('set-custom-btn');
 
     // Audio Elements
@@ -40,10 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let isRunning = false;
     let currentMode = 'pomodoro'; 
     let sessions = parseInt(localStorage.getItem('ticksy_sessions')) || 0;
+    let totalSecondsFocused = parseInt(localStorage.getItem('ticksy_total_time')) || 0; 
     let tasks = JSON.parse(localStorage.getItem('ticksy_tasks')) || [];
 
     // --- Init ---
     sessionCount.textContent = sessions;
+    updateTotalTimeDisplay(); 
     renderTasks();
     setInterval(updateLiveClock, 1000); 
     updateLiveClock();
@@ -51,6 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLiveClock() {
         const now = new Date();
         liveClock.textContent = now.toLocaleTimeString('en-US', { hour12: true }); 
+    }
+
+    function updateTotalTimeDisplay() {
+        const h = Math.floor(totalSecondsFocused / 3600);
+        const m = Math.floor((totalSecondsFocused % 3600) / 60);
+        if (h > 0) {
+            totalTimeDisplay.textContent = `${h}h ${m}m`;
+        } else {
+            totalTimeDisplay.textContent = `${m}m`;
+        }
     }
 
     // --- Timer Logic ---
@@ -109,12 +126,30 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timer);
         isRunning = false;
         mainBtn.textContent = 'START';
-        document.getElementById('audio-alert').play();
         
+        // --- AUDIO ALERT ---
+        const alertAudio = document.getElementById('audio-alert');
+        if (alertAudio.duration && alertAudio.duration > 5.5) {
+            alertAudio.currentTime = 5; 
+        } else {
+            alertAudio.currentTime = 0;
+        }
+        alertAudio.play().catch(e => console.error(e));
+        
+        // --- UPDATE STATS ---
         if (currentMode === 'pomodoro' || currentMode === 'custom') {
             sessions++;
             sessionCount.textContent = sessions;
             localStorage.setItem('ticksy_sessions', sessions);
+
+            totalSecondsFocused += initialTime;
+            localStorage.setItem('ticksy_total_time', totalSecondsFocused);
+            updateTotalTimeDisplay();
+        }
+
+        // --- SHOW CUSTOM INPUTS AGAIN ---
+        if (currentMode === 'custom') {
+            customInputs.classList.remove('hidden');
         }
     }
 
@@ -129,6 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (mode === 'custom') {
                 customInputs.classList.remove('hidden');
+                resetTimer(); 
+                timeLeft = 0; 
+                initialTime = 0;
+                updateDisplay();
             } else {
                 customInputs.classList.add('hidden');
                 timeLeft = modes[mode];
@@ -142,11 +181,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setCustomBtn.addEventListener('click', () => {
         const h = parseInt(customHrs.value) || 0;
         const m = parseInt(customMins.value) || 0;
-        if (h === 0 && m === 0) return;
-        timeLeft = (h * 3600) + (m * 60);
+        const s = parseInt(customSecs.value) || 0; 
+        
+        if (h === 0 && m === 0 && s === 0) return;
+        
+        timeLeft = (h * 3600) + (m * 60) + s;
         initialTime = timeLeft;
+        
         updateDisplay();
         resetTimer();
+        
         customInputs.classList.add('hidden');
     });
 
@@ -163,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Hard Reset Logic (Custom Alert) ---
+    // --- Hard Reset Logic ---
     hardResetBtn.addEventListener('click', () => {
         customAlert.classList.remove('hidden');
     });
@@ -173,13 +217,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     alertConfirm.addEventListener('click', () => {
-        localStorage.clear(); // Wipes all data
-        location.reload();    // Reloads the page fresh
+        localStorage.clear(); 
+        location.reload(); 
     });
 
     // --- Audio Logic ---
     musicToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent immediate closing
+        e.stopPropagation(); 
         musicPanel.classList.toggle('hidden');
     });
     
@@ -187,13 +231,10 @@ document.addEventListener('DOMContentLoaded', () => {
         musicPanel.classList.add('hidden');
     });
 
-    // Close panel/modal on outside click
     document.addEventListener('click', (e) => {
         if (!musicPanel.contains(e.target) && !musicToggle.contains(e.target)) {
             musicPanel.classList.add('hidden');
         }
-        
-        // Close modal if clicking outside the box
         if (e.target === customAlert) {
             customAlert.classList.add('hidden');
         }

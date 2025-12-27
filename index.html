@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ticksy - Focus Timer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="assets/logo.png">
@@ -13,7 +13,7 @@
 
     <nav class="navbar">
         <div class="brand">
-            <img src="assets/logo.png" alt="Ticksy Logo" class="logo-img">
+            <img src="assets/logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
             <span>Ticksy</span>
         </div>
         <div class="nav-controls">
@@ -29,44 +29,19 @@
         </div>
         
         <div class="sound-grid">
-            <button class="sound-item" data-sound="rain">
-                <i class="fa-solid fa-cloud-rain"></i>
-                <span>Rain</span>
-            </button>
-            <button class="sound-item" data-sound="thunder">
-                <i class="fa-solid fa-bolt"></i>
-                <span>Thunder</span>
-            </button>
-            <button class="sound-item" data-sound="forest">
-                <i class="fa-solid fa-tree"></i>
-                <span>Forest</span>
-            </button>
-            <button class="sound-item" data-sound="night">
-                <i class="fa-solid fa-cloud-moon"></i>
-                <span>Night</span>
-            </button>
-            
-            <button class="sound-item" data-sound="chalisa">
-                <i class="fa-solid fa-book-open"></i>
-                <span>Chalisa</span>
-            </button>
-            <button class="sound-item" data-sound="chandrachooda">
-                <i class="fa-solid fa-moon"></i>
-                <span>Chandra</span>
-            </button>
-            <button class="sound-item" data-sound="ikonkar">
-                <i class="fa-solid fa-khanda"></i>
-                <span>Ik Onkar</span>
-            </button>
-            <button class="sound-item" data-sound="shivvaani">
-                <i class="fa-solid fa-om"></i>
-                <span>Shiv</span>
-            </button>
+            <button class="sound-item" data-sound="rain"><i class="fa-solid fa-cloud-rain"></i><span>Rain</span></button>
+            <button class="sound-item" data-sound="thunder"><i class="fa-solid fa-bolt"></i><span>Thunder</span></button>
+            <button class="sound-item" data-sound="forest"><i class="fa-solid fa-tree"></i><span>Forest</span></button>
+            <button class="sound-item" data-sound="night"><i class="fa-solid fa-cloud-moon"></i><span>Night</span></button>
+            <button class="sound-item" data-sound="chalisa"><i class="fa-solid fa-book-open"></i><span>Chalisa</span></button>
+            <button class="sound-item" data-sound="chandrachooda"><i class="fa-solid fa-moon"></i><span>Chandra</span></button>
+            <button class="sound-item" data-sound="ikonkar"><i class="fa-solid fa-khanda"></i><span>Ik Onkar</span></button>
+            <button class="sound-item" data-sound="shivvaani"><i class="fa-solid fa-om"></i><span>Shiv</span></button>
         </div>
 
         <div class="volume-control">
             <i class="fa-solid fa-volume-low"></i>
-            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
             <i class="fa-solid fa-volume-high"></i>
         </div>
     </div>
@@ -78,11 +53,11 @@
                 <div class="tabs-container">
                     <div class="tabs">
                         <button class="tab-btn active" data-mode="pomodoro">Focus</button>
-                        <button class="tab-btn" data-mode="short">Short Break</button>
-                        <button class="tab-btn" data-mode="long">Long Break</button>
+                        <button class="tab-btn" data-mode="short">Short</button>
+                        <button class="tab-btn" data-mode="long">Long</button>
                         <button class="tab-btn" data-mode="custom" id="custom-tab">Custom</button>
                     </div>
-                    <div id="live-clock" class="live-clock">12:00:00 PM</div>
+                    <div id="live-clock" class="live-clock">12:00 PM</div>
                 </div>
 
                 <div id="custom-inputs" class="custom-inputs hidden">
@@ -93,6 +68,10 @@
                     <div class="input-wrapper">
                         <input type="number" id="custom-mins" placeholder="00" min="0" max="59">
                         <span>m</span>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="number" id="custom-secs" placeholder="00" min="0" max="59">
+                        <span>s</span>
                     </div>
                     <button id="set-custom-btn"><i class="fa-solid fa-check"></i></button>
                 </div>
@@ -113,21 +92,32 @@
 
         <aside class="sidebar">
             <section class="panel stats-panel">
-                <div class="stat-content">
-                    <div class="stat-icon"><i class="fa-solid fa-fire"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-number" id="session-count">0</span>
-                        <span class="stat-label">Sessions Today</span>
+                <div class="stat-row">
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fa-solid fa-fire"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="session-count">0</span>
+                            <span class="stat-label">Sessions</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item right-align">
+                        <div class="stat-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="total-time">0m</span>
+                            <span class="stat-label">Total Focus</span>
+                        </div>
                     </div>
                 </div>
             </section>
+            
             <section class="panel tasks-panel">
                 <div class="panel-header">
                     <h3>Tasks</h3>
                     <button id="add-task-btn"><i class="fa-solid fa-plus"></i></button>
                 </div>
                 <div class="input-row">
-                    <input type="text" id="task-input" placeholder="What are you working on?">
+                    <input type="text" id="task-input" placeholder="What needs to be done?">
                 </div>
                 <ul id="task-list"></ul>
             </section>
@@ -150,13 +140,11 @@
     <audio id="audio-thunder" loop src="assets/audio/thunder.mp3"></audio>
     <audio id="audio-forest" loop src="assets/audio/forest.mp3"></audio>
     <audio id="audio-night" loop src="assets/audio/night.mp3"></audio>
-    
     <audio id="audio-chalisa" loop src="assets/audio/chalisa.mp3"></audio>
     <audio id="audio-chandrachooda" loop src="assets/audio/chandrachooda.mp3"></audio>
     <audio id="audio-ikonkar" loop src="assets/audio/ikonkar.mp3"></audio>
     <audio id="audio-shivvaani" loop src="assets/audio/shivvaani.mp3"></audio>
-
-    <audio id="audio-alert" src="assets/audio/alert.mp3"></audio>
+    <audio id="audio-alert" src="assets/audio/alert.mp3" preload="auto"></audio>
 
     <script src="script.js"></script>
 </body>
