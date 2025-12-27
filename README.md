@@ -1,5 +1,6 @@
 [![Issues](https://img.shields.io/github/issues/MSubham06/Ticksy?style=for-the-badge)](https://github.com/MSubham06/Ticksy/issues)
 [![Stars](https://img.shields.io/github/stars/MSubham06/Ticksy?style=for-the-badge)](https://github.com/MSubham06/Ticksy/stargazers)
+[![Visit Website](https://img.shields.io/badge/Visit%20Website-Ticksy-orange?style=for-the-badge)](https://msubham06.github.io/Ticksy/)
 
 <br />
 <div align="center">
