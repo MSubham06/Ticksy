@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const liveClock = document.getElementById('live-clock');
     const fullscreenBtn = document.getElementById('fullscreen-btn');
     
+    // Custom Alert Elements
+    const hardResetBtn = document.getElementById('hard-reset-btn');
+    const customAlert = document.getElementById('custom-alert');
+    const alertCancel = document.getElementById('alert-cancel');
+    const alertConfirm = document.getElementById('alert-confirm');
+
     // Custom Inputs
     const customTab = document.getElementById('custom-tab');
     const customInputs = document.getElementById('custom-inputs');
@@ -157,7 +163,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Audio Logic (Updated) ---
+    // --- Hard Reset Logic (Custom Alert) ---
+    hardResetBtn.addEventListener('click', () => {
+        customAlert.classList.remove('hidden');
+    });
+
+    alertCancel.addEventListener('click', () => {
+        customAlert.classList.add('hidden');
+    });
+
+    alertConfirm.addEventListener('click', () => {
+        localStorage.clear(); // Wipes all data
+        location.reload();    // Reloads the page fresh
+    });
+
+    // --- Audio Logic ---
     musicToggle.addEventListener('click', (e) => {
         e.stopPropagation(); // Prevent immediate closing
         musicPanel.classList.toggle('hidden');
@@ -167,10 +187,15 @@ document.addEventListener('DOMContentLoaded', () => {
         musicPanel.classList.add('hidden');
     });
 
-    // Close music panel when clicking outside
+    // Close panel/modal on outside click
     document.addEventListener('click', (e) => {
         if (!musicPanel.contains(e.target) && !musicToggle.contains(e.target)) {
             musicPanel.classList.add('hidden');
+        }
+        
+        // Close modal if clicking outside the box
+        if (e.target === customAlert) {
+            customAlert.classList.add('hidden');
         }
     });
 
@@ -183,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 audio.pause();
                 btn.classList.remove('active');
             } else {
-                // Optional: Pause others if you want single-stream
                 document.querySelectorAll('audio').forEach(a => { if(a.id !== 'audio-alert') a.pause(); });
                 document.querySelectorAll('.sound-item').forEach(b => b.classList.remove('active'));
 

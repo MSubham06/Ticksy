@@ -17,13 +17,14 @@
             <span>Ticksy</span>
         </div>
         <div class="nav-controls">
+            <button id="hard-reset-btn" title="Reset All Data"><i class="fa-solid fa-arrows-rotate"></i></button>
             <button id="music-toggle" title="Ambience Sounds"><i class="fa-solid fa-music"></i></button>
         </div>
     </nav>
 
     <div id="music-panel" class="music-panel hidden">
         <div class="panel-header">
-            <h3>Ambience</h3>
+            <h3>Soundscapes</h3>
             <button id="close-music"><i class="fa-solid fa-xmark"></i></button>
         </div>
         
@@ -41,12 +42,25 @@
                 <span>Forest</span>
             </button>
             <button class="sound-item" data-sound="night">
-                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-cloud-moon"></i>
                 <span>Night</span>
             </button>
-            <button class="sound-item special" data-sound="gods">
-                <i class="fa-solid fa-om"></i>
+            
+            <button class="sound-item" data-sound="chalisa">
+                <i class="fa-solid fa-book-open"></i>
                 <span>Chalisa</span>
+            </button>
+            <button class="sound-item" data-sound="chandrachooda">
+                <i class="fa-solid fa-moon"></i>
+                <span>Chandra</span>
+            </button>
+            <button class="sound-item" data-sound="ikonkar">
+                <i class="fa-solid fa-khanda"></i>
+                <span>Ik Onkar</span>
+            </button>
+            <button class="sound-item" data-sound="shivvaani">
+                <i class="fa-solid fa-om"></i>
+                <span>Shiv</span>
             </button>
         </div>
 
@@ -89,7 +103,7 @@
 
                 <div class="controls">
                     <button id="main-btn" class="primary-btn">START</button>
-                    <button id="reset-btn" class="secondary-btn" title="Reset"><i class="fa-solid fa-rotate-right"></i></button>
+                    <button id="reset-btn" class="secondary-btn" title="Reset Timer"><i class="fa-solid fa-rotate-right"></i></button>
                     <button id="fullscreen-btn" class="secondary-btn" title="Full Screen"><i class="fa-solid fa-expand"></i></button>
                 </div>
                 
@@ -107,7 +121,6 @@
                     </div>
                 </div>
             </section>
-            <!-- Task -->
             <section class="panel tasks-panel">
                 <div class="panel-header">
                     <h3>Tasks</h3>
@@ -121,14 +134,30 @@
         </aside>
     </main>
 
+    <div id="custom-alert" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3>Reset Everything?</h3>
+            <p>This will permanently delete all tasks and session history. You'll start fresh.</p>
+            <div class="modal-actions">
+                <button id="alert-cancel" class="secondary-btn small-btn">Cancel</button>
+                <button id="alert-confirm" class="primary-btn small-btn">Yes, Reset</button>
+            </div>
+        </div>
+    </div>
+
     <audio id="audio-rain" loop src="assets/audio/rain.mp3"></audio>
     <audio id="audio-thunder" loop src="assets/audio/thunder.mp3"></audio>
     <audio id="audio-forest" loop src="assets/audio/forest.mp3"></audio>
     <audio id="audio-night" loop src="assets/audio/night.mp3"></audio>
+    
     <audio id="audio-chalisa" loop src="assets/audio/chalisa.mp3"></audio>
+    <audio id="audio-chandrachooda" loop src="assets/audio/chandrachooda.mp3"></audio>
+    <audio id="audio-ikonkar" loop src="assets/audio/ikonkar.mp3"></audio>
+    <audio id="audio-shivvaani" loop src="assets/audio/shivvaani.mp3"></audio>
+
     <audio id="audio-alert" src="assets/audio/alert.mp3"></audio>
 
     <script src="script.js"></script>
 </body>
-
 </html>

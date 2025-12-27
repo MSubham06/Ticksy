@@ -30,15 +30,17 @@ body {
 }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.5rem; }
 .logo-img { height: 35px; width: auto; }
+
+.nav-controls { display: flex; gap: 20px; }
 .nav-controls button { background: none; border: none; color: var(--text); font-size: 1.3rem; cursor: pointer; transition: 0.2s; position: relative; }
 .nav-controls button:hover { color: var(--primary); }
 
-/* --- MUSIC PANEL (POP-OVER) --- */
+/* --- MUSIC PANEL --- */
 .music-panel {
     position: absolute;
     top: 70px;
     right: 40px;
-    width: 320px;
+    width: 360px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 20px;
@@ -46,7 +48,6 @@ body {
     box-shadow: 0 15px 50px rgba(0,0,0,0.6);
     z-index: 100;
     
-    /* Animation logic */
     opacity: 1;
     transform: translateY(0);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -57,7 +58,7 @@ body {
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
-    visibility: hidden; /* Ensures it doesn't block clicks when hidden */
+    visibility: hidden;
 }
 
 .music-panel h3 { font-size: 1rem; margin-bottom: 0; }
@@ -66,7 +67,7 @@ body {
 
 .sound-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin: 20px 0;
 }
@@ -75,18 +76,24 @@ body {
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 15px 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 8px;
     cursor: pointer;
     color: var(--text-light);
     transition: 0.2s;
+    aspect-ratio: 1 / 1;
+    padding: 0;
 }
 
 .sound-item i { font-size: 1.2rem; }
-.sound-item span { font-size: 0.8rem; }
+.sound-item span { 
+    font-size: 0.7rem; 
+    text-align: center;
+    line-height: 1.2;
+}
 
 .sound-item:hover { border-color: var(--primary); color: var(--text); }
 .sound-item.active {
@@ -100,10 +107,10 @@ body {
     display: flex; align-items: center; gap: 10px; color: var(--text-light); font-size: 0.9rem;
     background: var(--bg); padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border);
 }
+.volume-control i { color: var(--primary); }
 .volume-control input { flex: 1; accent-color: var(--primary); cursor: pointer; }
 
-
-/* --- MAIN LAYOUT (Matches previous code) --- */
+/* --- MAIN LAYOUT --- */
 .container {
     display: flex; align-items: stretch; gap: 20px; padding: 0 40px;
     width: 100%; max-width: 1100px; margin: 0 auto; height: 100%;
@@ -137,9 +144,15 @@ body {
 .input-wrapper input { background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 8px; width: 60px; border-radius: 10px; text-align: center; }
 #set-custom-btn { background: var(--primary); color: white; border: none; width: 35px; height: 35px; border-radius: 10px; cursor: pointer; }
 
+/* UPDATED: Added spacing between digits */
 .timer-display h1 {
-    font-size: 8rem; font-weight: 800; color: var(--text); line-height: 1;
-    margin: 20px 0; font-variant-numeric: tabular-nums; letter-spacing: -4px;
+    font-size: 8rem; 
+    font-weight: 800; 
+    color: var(--text); 
+    line-height: 1;
+    margin: 20px 0; 
+    font-variant-numeric: tabular-nums; 
+    letter-spacing: 5px; /* Adds space between digits */
 }
 
 .controls { display: flex; gap: 15px; }
@@ -204,3 +217,40 @@ body.fullscreen-active .container { height: 100vh; padding: 0; align-items: cent
 body.fullscreen-active .timer-section { flex: none; width: 100%; }
 body.fullscreen-active .timer-card { background: transparent; border: none; box-shadow: none; justify-content: center; }
 body.fullscreen-active .timer-display h1 { font-size: 20vw; margin: 0; }
+
+/* --- CUSTOM MODAL STYLES --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 200; /* Higher than music panel */
+    display: flex; justify-content: center; align-items: center;
+    opacity: 1; transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%; max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transform: scale(1); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.hidden .modal-box { transform: scale(0.9); }
+
+.modal-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+.modal-box h3 { font-size: 1.4rem; color: var(--text); margin-bottom: 10px; }
+.modal-box p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.5; }
+
+.modal-actions { display: flex; gap: 15px; justify-content: center; }
+.small-btn {
+    font-size: 0.9rem; padding: 12px 24px; height: auto; width: auto; border-radius: 12px;
+}
