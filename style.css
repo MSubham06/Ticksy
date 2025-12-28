@@ -236,22 +236,21 @@ body {
 
 /* STATS */
 .stats-panel { flex: 0 0 auto; }
-.stat-row { display: flex; align-items: center; justify-content: space-between; }
+.stat-row { display: flex; align-items: center; justify-content: space-evenly; }
 .stat-item { display: flex; align-items: center; gap: 12px; flex: 1; }
-.stat-item.right-align { justify-content: flex-end; flex-direction: row-reverse; }
-.stat-item.right-align .stat-info { align-items: flex-end; }
+.stat-item.right-align { justify-content: end; flex-direction: row-reverse; }
+.stat-item.right-align .stat-info { align-items: end; }
 
 /* Stat Info Vertical Stack */
 .stat-info { display: flex; flex-direction: column; justify-content: center; }
 .stat-number { display: block; font-size: 1.4rem; font-weight: 700; color: var(--text); line-height: 1.1; }
-.stat-label { display: block; font-size: 0.8rem; color: var(--text-light); margin-top: 2px; }
+.stat-label { display: block; font-size: 0.8rem; color: var(--text-light); margin-top: 2px; text-align: right;}
 
-.stat-divider { width: 1px; height: 40px; background: var(--border); margin: 0 10px; }
+.stat-divider { width: 1px; height: 40px; background: var(--border); margin: 0 10px;}
 .stat-icon {
     width: 45px; height: 45px; background: rgba(242, 92, 5, 0.1); border-radius: 12px;
     display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem;
 }
-
 /* TASKS */
 .tasks-panel { flex: 1; display: flex; flex-direction: column; min-height: 300px; max-height: 500px; }
 #add-task-btn { background: var(--primary); color: white; border: none; border-radius: 8px; width: 30px; height: 30px; cursor: pointer; }
