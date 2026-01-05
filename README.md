@@ -26,7 +26,7 @@
 
 ---
 
-## 📖 About the Project
+## 📖 About the Project :
 
 **Ticksy** is designed to help students, developers, and professionals maintain high levels of focus while preventing burnout. By combining the structured **Pomodoro Technique** with calming **ambient soundscapes**, Ticksy creates an environment conducive to deep work.<br />
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
